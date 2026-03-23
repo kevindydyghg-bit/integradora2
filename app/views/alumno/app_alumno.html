@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Estudio - Edu Integral</title>
+    <!-- Conectamos la hoja de estilos pura -->
+    <link rel="stylesheet" href="../../../public/css/alumno.css">
+</head>
+<body>
+
+    <header class="app-header">
+        <div class="logo-area">
+            <span class="logo-icon">⚡</span>
+            <div class="logo-text">
+                <h1>Edu Integral</h1>
+                <p>Modo Aula</p>
+            </div>
+        </div>
+        
+        <div class="user-status-area">
+            <div class="iot-status">
+                <div class="status-dot pulse"></div>
+                <span>Módulo IoT Conectado</span>
+            </div>
+            
+            <div class="user-profile">
+                <div class="user-info">
+                    <p class="user-name">Kevin Junior</p>
+                    <p class="user-school">UTeM</p>
+                </div>
+                <div class="user-avatar">KJ</div>
+            </div>
+        </div>
+    </header>
+
+    <main class="app-main">
+        
+        <!-- Panel Izquierdo: Clases y Tareas -->
+        <aside class="sidebar-tasks">
+            
+            <div class="card card-current">
+                <h2>En Curso</h2>
+                <div class="current-class-info">
+                    <div class="class-icon">💻</div>
+                    <h3>Programación</h3>
+                    <p>Salón B-204</p>
+                </div>
+            </div>
+
+            <div class="card card-pending">
+                <div class="pending-header">
+                    <h2>Pendientes</h2>
+                    <span class="badge-new">2 Nuevas</span>
+                </div>
+                
+                <div class="task-list">
+                    <div class="task-item task-orange">
+                        <div class="task-icon">📝</div>
+                        <div class="task-details">
+                            <h4>Diagrama de Flujo</h4>
+                            <p>Entrega: Hoy 23:59</p>
+                        </div>
+                    </div>
+                    
+                    <div class="task-item task-indigo">
+                        <div class="task-icon">📖</div>
+                        <div class="task-details">
+                            <h4>Condicionales</h4>
+                            <p>Lectura asignada</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </aside>
+
+        <!-- Área Principal: La Lección -->
+        <section class="lesson-area">
+            
+            <div class="lesson-header">
+                <span class="lesson-tag">UNIDAD 1: VARIABLES - 1/5</span>
+                <button class="btn-close">✕ Cerrar Lección</button>
+            </div>
+            
+            <div class="progress-container">
+                <div class="progress-bar" style="width: 20%;"></div>
+            </div>
+            
+            <div class="lesson-content">
+                <div class="concept-icon">📦</div>
+                <h2 class="concept-text">
+                    "Una variable es como una <strong>caja</strong>.<br> Sirve para guardar cosas."
+                </h2>
+                <button class="btn-audio">🔊 Escuchar Explicación</button>
+            </div>
+            
+            <div class="lesson-footer">
+                <button class="btn-back">← Atrás</button>
+                <button class="btn-next">Siguiente →</button>
+            </div>
+
+            <!-- Botón de Emergencia SOS -->
+            <div class="sos-container">
+                <button class="btn-sos">🆘</button>
+                <span class="sos-tooltip">Emergencia</span>
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+</html>

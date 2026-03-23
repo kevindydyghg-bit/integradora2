@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle del Alumno - Edu Integral</title>
+    <link rel="stylesheet" href="../../../public/css/docente.css">
+    <link rel="stylesheet" href="../../../public/css/detalle_alumno.css">
+</head>
+<body>
+
+    <div class="layout-container">
+        <!-- El mismo menú lateral del dashboard general -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <span class="logo-icon">⚡</span>
+                <h2>Edu Integral</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-link">← Volver al Grupo</a>
+                <a href="#" class="nav-link active">👤 Detalle Alumno</a>
+            </nav>
+            <div class="sidebar-footer">
+                <p class="docente-nombre">Ing. Roberto</p>
+                <a href="../../../public/login.html" class="logout-link">Cerrar Sesión</a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            
+            <header class="profile-header">
+                <div class="profile-basic-info">
+                    <div class="avatar-large">KJ</div>
+                    <div>
+                        <h1>Kevin Junior</h1>
+                        <p class="subtitle">Laboratorio TICs - PC 12 | IP: 192.168.1.45</p>
+                    </div>
+                </div>
+                <div class="iot-status-badge online">
+                    <span class="dot"></span> Módulo ESP32: Conectado
+                </div>
+            </header>
+
+            <!-- Tarjetas de Métricas del Módulo Físico -->
+            <section class="metrics-grid">
+                <div class="metric-card">
+                    <h3>Tiempo de Atención</h3>
+                    <div class="metric-value">45 <span class="unit">min</span></div>
+                    <p class="metric-desc">Medido por sensor de proximidad</p>
+                </div>
+                <div class="metric-card">
+                    <h3>Tiempo Prom. Respuesta</h3>
+                    <div class="metric-value">4.2 <span class="unit">seg</span></div>
+                    <p class="metric-desc">Uso de botones físicos</p>
+                </div>
+                <div class="metric-card alert-bg">
+                    <h3>Alertas SOS Hoy</h3>
+                    <div class="metric-value text-red">1</div>
+                    <p class="metric-desc text-red">Última: 10:15 AM</p>
+                </div>
+            </section>
+
+            <!-- Historial de la Sesión Actual -->
+            <section class="session-details">
+                <div class="section-header">
+                    <h2>Desempeño en la Sesión (Programación Básica)</h2>
+                </div>
+                
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Actividad</th>
+                            <th>Estado</th>
+                            <th>Tiempo Invertido</th>
+                            <th>Resultado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1. Variables (Teoría)</td>
+                            <td><span class="badge completed">Completado</span></td>
+                            <td>12 min</td>
+                            <td>N/A</td>
+                        </tr>
+                        <tr>
+                            <td>2. Ejercicio Práctico 1</td>
+                            <td><span class="badge completed">Completado</span></td>
+                            <td>8 min</td>
+                            <td><span class="score good">Correcto</span></td>
+                        </tr>
+                        <tr>
+                            <td>3. Diagrama de Flujo</td>
+                            <td><span class="badge in-progress">En Curso</span></td>
+                            <td>25 min</td>
+                            <td>Pendiente</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Controles del Docente -->
+            <section class="teacher-controls">
+                <h2>Acciones Directas</h2>
+                <div class="control-buttons">
+                    <button class="btn-action btn-message">💬 Enviar Mensaje a Pantalla</button>
+                    <button class="btn-action btn-pause">⏸️ Pausar Actividad</button>
+                    <button class="btn-action btn-restart">🔄 Reiniciar Módulo Físico</button>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Docente - Edu Integral</title>
+    <link rel="stylesheet" href="../../../public/css/docente.css">
+</head>
+<body>
+
+    <div class="layout-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <span class="logo-icon">⚡</span>
+                <h2>Edu Integral</h2>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-link active">📊 Monitoreo</a>
+                <a href="#" class="nav-link">👥 Mis Alumnos</a>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <p class="docente-nombre">Ing. Roberto</p>
+                <a href="../../../public/login.html" class="logout-link">Cerrar Sesión</a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="content-header">
+                <div class="header-titles">
+                    <h1>Monitoreo en Tiempo Real</h1>
+                    <p>Vista general del grupo</p>
+                </div>
+            </header>
+
+            <div class="grid-alumnos">
+                <div class="alumno-card">
+                    <div class="card-header">
+                        <div class="avatar">KJ</div>
+                        <div class="info">
+                            <h3>Kevin Junior</h3>
+                            <p>Módulo: <span class="status-on">Encendido</span></p>
+                        </div>
+                    </div>
+                    
+                    <div class="card-body">
+                        <div class="progress-section">
+                            <div class="progress-text">
+                                <span>Tareas</span>
+                                <strong>4/5</strong>
+                            </div>
+                            <div class="progress-bar-bg">
+                                <div class="progress-bar-fill" style="width: 80%;"></div>
+                            </div>
+                        </div>
+
+                        <div class="alert-box">
+                            <span class="alert-icon">⚠️</span>
+                            <div class="alert-text">
+                                <strong>Alerta SOS Activa</strong>
+                                <p>El alumno solicita asistencia.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+        </main>
+    </div>
+
+</body>
+</html>
