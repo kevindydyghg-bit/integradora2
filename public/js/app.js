@@ -1,53 +1,121 @@
-// Esperamos a que todo el HTML cargue antes de ejecutar el código
-console.log("¡El archivo app.js está conectado correctamente!");
 document.addEventListener('DOMContentLoaded', () => {
-    
-    // ==========================================
-    // LÓGICA DE LA VISTA DEL ALUMNO (Modo Aula)
-    // ==========================================
-    
-    const btnSos = document.querySelector('.btn-sos');
-    const btnAudio = document.querySelector('.btn-audio');
-    const btnClose = document.querySelector('.btn-close');
 
-    // Funcionalidad del Botón de Emergencia (SOS)
-    if (btnSos) {
-        btnSos.addEventListener('click', () => {
-            // Efecto visual rápido de pulsación
-            btnSos.style.transform = 'scale(0.9)';
-            setTimeout(() => btnSos.style.transform = 'scale(1)', 150);
+    // =========================================================
+    // 1. LÓGICA DE LA PANTALLA DE LOGIN (index.html)
+    // =========================================================
+    const pantallaBienvenida = document.getElementById('pantalla-bienvenida');
+    const pantallaLogin = document.getElementById('pantalla-login');
+    const btnMostrarLogin = document.getElementById('btn-mostrar-login');
+    const btnVolver = document.getElementById('btn-volver');
+    const formularioLogin = document.getElementById('formulario-login');
 
-            // Simulamos la alerta. (Nota para Brandon: Aquí irá el fetch() o WebSocket hacia el backend)
-            alert('🚨 ¡Alerta SOS enviada al Ing. Roberto!\n\nTu profesor ha sido notificado y verá tu alerta en el panel principal.');
+    // Comprobamos si estamos en la pantalla de login antes de ejecutar esto
+    if (btnMostrarLogin && btnVolver && formularioLogin) {
+        
+        // Transición a Formulario
+        btnMostrarLogin.addEventListener('click', () => {
+            pantallaBienvenida.classList.remove('tarjeta-activa');
+            pantallaBienvenida.classList.add('tarjeta-oculta');
+            pantallaLogin.classList.remove('tarjeta-oculta');
+            pantallaLogin.classList.add('tarjeta-activa');
         });
-    }
 
-    // Funcionalidad del Botón de Audio
-    if (btnAudio) {
-        btnAudio.addEventListener('click', () => {
-            // Animación del botón para indicar que está "reproduciendo"
-            const textoOriginal = btnAudio.innerHTML;
-            btnAudio.innerHTML = '🔊 Reproduciendo...';
-            btnAudio.style.backgroundColor = '#1d4ed8'; // Azul más oscuro
-
-            // Simulamos el tiempo que dura el audio (3 segundos) y lo regresamos a la normalidad
-            setTimeout(() => {
-                btnAudio.innerHTML = textoOriginal;
-                btnAudio.style.backgroundColor = ''; // Regresa al color de CSS
-            }, 3000);
+        // Transición de regreso a Bienvenida
+        btnVolver.addEventListener('click', () => {
+            pantallaLogin.classList.remove('tarjeta-activa');
+            pantallaLogin.classList.add('tarjeta-oculta');
+            pantallaBienvenida.classList.remove('tarjeta-oculta');
+            pantallaBienvenida.classList.add('tarjeta-activa');
+            formularioLogin.reset();
         });
-    }
 
-    // Funcionalidad de Cerrar Lección
-    if (btnClose) {
-        btnClose.addEventListener('click', () => {
-            const confirmacion = confirm('¿Estás seguro de que deseas salir de la lección actual? Tu progreso de "VARIABLES" se guardará.');
-            
-            if (confirmacion) {
-                // Si acepta, simulamos cerrar sesión mandándolo al login
-                window.location.href = '../../../public/index.html';
+        // Simulación de validación de DB (Se cambiará por fetch a Node después)
+        formularioLogin.addEventListener('submit', (evento) => {
+            evento.preventDefault();
+            const nombreIngresado = document.getElementById('nombreUsuario').value.trim();
+            const passwordIngresado = document.getElementById('passwordUsuario').value.trim();
+
+            const usuariosDB = [
+                { nombre: 'Juan Alvarez', contrasena: 'profe123', id_rol: 1 },
+                { nombre: 'Kevin Moreno', contrasena: 'alumno123', id_rol: 2 },
+                { nombre: 'Leo Martinez', contrasena: 'alumno456', id_rol: 2 }
+            ];
+
+            const usuarioEncontrado = usuariosDB.find(
+                (user) => user.nombre.toLowerCase() === nombreIngresado.toLowerCase() && user.contrasena === passwordIngresado
+            );
+
+            if (usuarioEncontrado) {
+                if (usuarioEncontrado.id_rol === 1) {
+                    window.location.href = '../app/views/docente/dashboard.html';
+                } else if (usuarioEncontrado.id_rol === 2) {
+                    window.location.href = '../app/views/alumno/app_alumno.html';
+                }
+            } else {
+                alert('Tus datos no coinciden. Por favor, revisa tu nombre y contraseña e intenta de nuevo.');
             }
         });
     }
 
+    // =========================================================
+    // 2. LÓGICA DEL DASHBOARD DOCENTE (dashboard.html)
+    // =========================================================
+    const contenedorGrid = document.querySelector('.grid-alumnos');
+    
+    // Si existe el contenedor del grid (estamos en el dashboard del profe)
+    if (contenedorGrid) {
+        cargarAlumnosDesdeBD(contenedorGrid);
+    }
 });
+
+// Función que consulta a Node.js e inyecta las tarjetas
+async function cargarAlumnosDesdeBD(contenedor) {
+    try {
+        // Pedimos los datos al servidor Node.js
+        const respuesta = await fetch('http://localhost:3000/api/alumnos');
+        const alumnos = await respuesta.json();
+        
+        // Vaciamos el contenedor por si había código HTML viejo
+        contenedor.innerHTML = ''; 
+
+        // Recorremos la lista de alumnos traída de la Base de Datos
+        alumnos.forEach(alumno => {
+            // Sacamos las iniciales (Ej: Kevin Moreno = KM)
+            const iniciales = alumno.nombre.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
+
+            // Plantilla de la tarjeta tipo Google Classroom
+            const htmlTarjeta = `
+                <a href="detalle_alumno.html?id=${alumno.id_usuario}" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="alumno-card" style="cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 10px 15px -3px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 1px 3px rgba(0,0,0,0.1)'">
+                        
+                        <div class="card-header">
+                            <div class="avatar">${iniciales}</div>
+                            <div class="info">
+                                <h3>${alumno.nombre}</h3>
+                                <p>Módulo: <span class="status-on">Conectado</span></p>
+                            </div>
+                        </div>
+                        
+                        <div class="card-body">
+                            <div class="progress-section">
+                                <div class="progress-text">
+                                    <span>Tareas Completadas</span>
+                                    <strong>0/5</strong>
+                                </div>
+                                <div class="progress-bar-bg">
+                                    <div class="progress-bar-fill" style="width: 0%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </a>
+            `;
+            // Añadimos la tarjeta al grid visual
+            contenedor.innerHTML += htmlTarjeta;
+        });
+    } catch (error) {
+        console.error("Error al cargar los alumnos:", error);
+        contenedor.innerHTML = '<p style="text-align:center; color:red; padding:20px;">No se pudo conectar con el servidor. Verifica que Node.js esté corriendo.</p>';
+    }
+}

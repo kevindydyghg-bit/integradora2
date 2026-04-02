@@ -15,7 +15,7 @@ body {
 
 /* ================= HEADER ================= */
 .app-header {
-    background-color: #2563eb; /* Azul brillante */
+    background-color: #2563eb;
     color: white;
     padding: 1rem 2rem;
     display: flex;
@@ -128,14 +128,14 @@ body {
     flex: 1;
     padding: 2rem;
     display: grid;
-    grid-template-columns: 1fr 3fr; /* 1 parte sidebar, 3 partes contenido */
+    grid-template-columns: 1fr 3fr;
     gap: 2rem;
     max-width: 1600px;
     margin: 0 auto;
     width: 100%;
 }
 
-/* ================= SIDEBAR (Tarjetas Izquierdas) ================= */
+/* ================= SIDEBAR ================= */
 .sidebar-tasks {
     display: flex;
     flex-direction: column;
@@ -422,11 +422,11 @@ body {
 .btn-sos {
     background-color: #ef4444;
     color: white;
-    width: 5rem;
-    height: 5rem;
+    width: 6rem;
+    height: 6rem;
     border-radius: 50%;
     font-weight: bold;
-    font-size: 2rem;
+    font-size: 2.5rem;
     border: 4px solid white;
     box-shadow: 0 10px 25px -5px rgba(239, 68, 68, 0.5);
     cursor: pointer;
@@ -435,7 +435,7 @@ body {
 
 .btn-sos:hover {
     background-color: #dc2626;
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
 .btn-sos:active {
@@ -443,19 +443,52 @@ body {
 }
 
 .sos-tooltip {
-    font-size: 0.75rem;
+    font-size: 1rem;
     font-weight: bold;
     color: #dc2626;
-    text-transform: uppercase;
-    background-color: rgba(255, 255, 255, 0.9);
-    padding: 0.25rem 0.75rem;
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 0.5rem 1rem;
     border-radius: 9999px;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     margin-top: 0.5rem;
-    opacity: 0;
-    transition: opacity 0.2s;
 }
 
-.sos-container:hover .sos-tooltip {
-    opacity: 1;
+/* ================= NOTIFICACIONES (TOASTS AMIGABLES) ================= */
+.toast-container {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.toast {
+    background-color: #10b981; 
+    color: white;
+    padding: 1.5rem 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+    font-weight: 600;
+    font-size: 1.125rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    /* Movimiento suave, no brusco */
+    transform: translateX(120%);
+    transition: transform 0.4s ease-in-out; 
+}
+
+.toast.show {
+    transform: translateX(0);
+}
+
+.toast-icon {
+    font-size: 1.5rem;
+}
+
+/* Color de alerta claro pero no agresivo visualmente */
+.toast.alerta {
+    background-color: #3b82f6; /* Azul claro en vez de rojo chillón para no alterar */
 }

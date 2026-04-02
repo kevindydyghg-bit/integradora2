@@ -4,14 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Docente - Edu Integral</title>
-    <!-- Conexión a la hoja de estilos -->
     <link rel="stylesheet" href="../../../public/css/docente.css">
 </head>
 <body>
 
     <div class="layout-container">
         
-        <!-- Menú Lateral -->
         <aside class="sidebar">
             <div class="sidebar-header">
                 <span class="logo-icon">⚡</span>
@@ -24,13 +22,11 @@
             </nav>
             
             <div class="sidebar-footer">
-                <p class="docente-nombre">Ing. Roberto</p>
-                <!-- Te regresa al login -->
+                <p class="docente-nombre" id="nombre-docente-sidebar">Cargando...</p>
                 <a href="../../../public/index.html" class="logout-link">Cerrar Sesión</a>
             </div>
         </aside>
 
-        <!-- Contenido Principal -->
         <main class="main-content">
             <header class="content-header">
                 <div class="header-titles">
@@ -39,49 +35,12 @@
                 </div>
             </header>
 
-            <!-- Cuadrícula de Alumnos -->
-            <div class="grid-alumnos">
-                
-                <!-- Tarjeta Clickeable de Kevin Junior -->
-                <a href="detalle_alumno.html" style="text-decoration: none; color: inherit; display: block;">
-                    <div class="alumno-card" style="cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 10px 15px -3px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 1px 3px rgba(0,0,0,0.1)'">
-                        
-                        <div class="card-header">
-                            <div class="avatar">KJ</div>
-                            <div class="info">
-                                <h3>Kevin Junior</h3>
-                                <p>Módulo: <span class="status-on">Encendido</span></p>
-                            </div>
-                        </div>
-                        
-                        <div class="card-body">
-                            <div class="progress-section">
-                                <div class="progress-text">
-                                    <span>Tareas</span>
-                                    <strong>4/5</strong>
-                                </div>
-                                <div class="progress-bar-bg">
-                                    <div class="progress-bar-fill" style="width: 80%;"></div>
-                                </div>
-                            </div>
-
-                            <div class="alert-box">
-                                <span class="alert-icon">⚠️</span>
-                                <div class="alert-text">
-                                    <strong>Alerta SOS Activa</strong>
-                                    <p>El alumno solicita asistencia.</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </a>
-                <!-- Fin de la tarjeta -->
-
-            </div>
+            <div class="grid-alumnos" class="grid-alumnos">
+                </div>
         </main>
         
     </div>
 
+    <script src="../../../public/js/app.js"></script>
 </body>
 </html>

@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel de Estudio - Edu Integral</title>
-    <!-- Conectamos la hoja de estilos pura -->
     <link rel="stylesheet" href="../../../public/css/alumno.css">
 </head>
 <body>
@@ -21,7 +20,7 @@
         <div class="user-status-area">
             <div class="iot-status">
                 <div class="status-dot pulse"></div>
-                <span>Módulo IoT Conectado</span>
+                <span>Conectado</span>
             </div>
             
             <div class="user-profile">
@@ -36,11 +35,9 @@
 
     <main class="app-main">
         
-        <!-- Panel Izquierdo: Clases y Tareas -->
         <aside class="sidebar-tasks">
-            
             <div class="card card-current">
-                <h2>En Curso</h2>
+                <h2>Clase Actual</h2>
                 <div class="current-class-info">
                     <div class="class-icon">💻</div>
                     <h3>Programación</h3>
@@ -50,7 +47,7 @@
 
             <div class="card card-pending">
                 <div class="pending-header">
-                    <h2>Pendientes</h2>
+                    <h2>Tareas</h2>
                     <span class="badge-new">2 Nuevas</span>
                 </div>
                 
@@ -59,28 +56,25 @@
                         <div class="task-icon">📝</div>
                         <div class="task-details">
                             <h4>Diagrama de Flujo</h4>
-                            <p>Entrega: Hoy 23:59</p>
+                            <p>Para hoy</p>
                         </div>
                     </div>
                     
                     <div class="task-item task-indigo">
                         <div class="task-icon">📖</div>
                         <div class="task-details">
-                            <h4>Condicionales</h4>
-                            <p>Lectura asignada</p>
+                            <h4>Leer texto</h4>
+                            <p>Asignado</p>
                         </div>
                     </div>
                 </div>
             </div>
-            
         </aside>
 
-        <!-- Área Principal: La Lección -->
         <section class="lesson-area">
-            
             <div class="lesson-header">
                 <span class="lesson-tag">UNIDAD 1: VARIABLES - 1/5</span>
-                <button class="btn-close">✕ Cerrar Lección</button>
+                <button class="btn-close">✕ Salir de la lección</button>
             </div>
             
             <div class="progress-container">
@@ -92,7 +86,7 @@
                 <h2 class="concept-text">
                     "Una variable es como una <strong>caja</strong>.<br> Sirve para guardar cosas."
                 </h2>
-                <button class="btn-audio">🔊 Escuchar Explicación</button>
+                <button class="btn-audio">🔊 Escuchar la explicación</button>
             </div>
             
             <div class="lesson-footer">
@@ -100,16 +94,16 @@
                 <button class="btn-next">Siguiente →</button>
             </div>
 
-            <!-- Botón de Emergencia SOS -->
             <div class="sos-container">
                 <button class="btn-sos">🆘</button>
-                <span class="sos-tooltip">Emergencia</span>
+                <span class="sos-tooltip">Pedir Ayuda</span>
             </div>
-
         </section>
-
     </main>
 
-<script src="../../../public/js/app.js"></script>
+    <!-- Contenedor para Notificaciones Amigables -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <script src="../../../public/js/app.js"></script>
 </body>
 </html>
